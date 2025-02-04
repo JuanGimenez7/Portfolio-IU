@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   standalone: true,
-  imports: [FormsModule], // Agrega FormsModule aquí
+  imports: [FormsModule, RouterModule], // Agrega FormsModule aquí
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  username: string = 'jgimenez7@gmail.com';
+  password: string = 'yrg2uyfbywe';
 
   onSubmit() {
     console.log('Usuario:', this.username);

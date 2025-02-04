@@ -13,4 +13,17 @@ export class ProfileService {
   saveProfile(profileData: any): Observable<any> {
     return this.http.post(this.apiUrl, profileData);
   }
+
+  // En tu ProfileService, agrega:
+  generatePdf(profileData: any): Observable<Blob> {
+    return this.http.post(
+      'http://localhost:3000/api/generatePdf',
+      profileData,
+      {
+        responseType: 'blob',
+      }
+    );
+  }
+
+  
 }

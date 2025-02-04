@@ -8,7 +8,7 @@ import { ProfileService } from '../profile.service';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
   profileData = {
@@ -20,32 +20,58 @@ export class ProfileComponent {
     correo: '',
     paginaWeb: '',
     direccion: '',
-    experienciaLaboral: [{ empresa: '', descripcion: '', anioInicio: '', anioCierre: '' }],
+    experienciaLaboral: [
+      { empresa: '', descripcion: '', anioInicio: '', anioCierre: '' },
+    ],
     idiomas: '',
     competencias: '',
-    formacionAcademica: [{ universidad: '', carrera: '', anioInicio: '', anioCierre: '' }],
-    habilidades: ''
+    formacionAcademica: [
+      { universidad: '', carrera: '', anioInicio: '', anioCierre: '' },
+    ],
+    habilidades: '',
   };
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService) {}
 
   onSubmit() {
     console.log('Form data:', this.profileData);
     // Llamada al backend
     this.profileService.saveProfile(this.profileData).subscribe(
-      response => {
+      (response) => {
         console.log('Datos guardados correctamente:', response);
         alert('Perfil guardado correctamente');
       },
-      error => {
+      (error) => {
         console.error('Error al guardar los datos:', error);
         alert('Hubo un error al guardar los datos');
       }
     );
   }
 
+  generarPdf() {
+    this.profileService.generatePdf(this.profileData).subscribe(
+      (pdfBlob: Blob) => {
+        // Crea una URL y descarga el PDF
+        const url = window.URL.createObjectURL(pdfBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'perfil.pdf';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        console.error('Error al generar el PDF:', error);
+      }
+    );
+  }
+
   addExperience() {
-    this.profileData.experienciaLaboral.push({ empresa: '', descripcion: '', anioInicio: '', anioCierre: '' });
+    this.profileData.experienciaLaboral.push({
+      empresa: '',
+      descripcion: '',
+      anioInicio: '',
+      anioCierre: '',
+    });
   }
 
   removeExperience(index: number) {
@@ -53,7 +79,12 @@ export class ProfileComponent {
   }
 
   addEducation() {
-    this.profileData.formacionAcademica.push({ universidad: '', carrera: '', anioInicio: '', anioCierre: '' });
+    this.profileData.formacionAcademica.push({
+      universidad: '',
+      carrera: '',
+      anioInicio: '',
+      anioCierre: '',
+    });
   }
 
   removeEducation(index: number) {

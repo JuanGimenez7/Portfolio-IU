@@ -4,45 +4,97 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="profileData.nombre" required>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            class="form-control"
+            [(ngModel)]="profileData.nombre"
+            required
+          />
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="apellido">Apellido</label>
-          <input type="text" id="apellido" name="apellido" class="form-control" [(ngModel)]="profileData.apellido" required>
+          <input
+            type="text"
+            id="apellido"
+            name="apellido"
+            class="form-control"
+            [(ngModel)]="profileData.apellido"
+            required
+          />
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="oficio">Oficio</label>
-      <input type="text" id="oficio" name="oficio" class="form-control" [(ngModel)]="profileData.oficio" required>
+      <input
+        type="text"
+        id="oficio"
+        name="oficio"
+        class="form-control"
+        [(ngModel)]="profileData.oficio"
+        required
+      />
     </div>
 
     <div class="form-group">
       <label for="miPerfil">Mi Perfil</label>
-      <textarea id="miPerfil" name="miPerfil" class="form-control" [(ngModel)]="profileData.miPerfil"></textarea>
+      <textarea
+        id="miPerfil"
+        name="miPerfil"
+        class="form-control"
+        [(ngModel)]="profileData.miPerfil"
+      ></textarea>
     </div>
 
     <div class="form-group">
       <label for="telefono">Telefono</label>
-      <input type="text" id="telefono" name="telefono" class="form-control" [(ngModel)]="profileData.telefono" required>
+      <input
+        type="text"
+        id="telefono"
+        name="telefono"
+        class="form-control"
+        [(ngModel)]="profileData.telefono"
+        required
+      />
     </div>
 
     <div class="form-group">
       <label for="correo">Correo</label>
-      <input type="email" id="correo" name="correo" class="form-control" [(ngModel)]="profileData.correo" required>
+      <input
+        type="email"
+        id="correo"
+        name="correo"
+        class="form-control"
+        [(ngModel)]="profileData.correo"
+        required
+      />
     </div>
 
     <div class="form-group">
       <label for="paginaWeb">Página Web</label>
-      <input type="url" id="paginaWeb" name="paginaWeb" class="form-control" [(ngModel)]="profileData.paginaWeb">
+      <input
+        type="url"
+        id="paginaWeb"
+        name="paginaWeb"
+        class="form-control"
+        [(ngModel)]="profileData.paginaWeb"
+      />
     </div>
 
     <div class="form-group">
       <label for="direccion">Dirección</label>
-      <input type="text" id="direccion" name="direccion" class="form-control" [(ngModel)]="profileData.direccion">
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        class="form-control"
+        [(ngModel)]="profileData.direccion"
+      />
     </div>
 
     <div class="form-group">
@@ -50,33 +102,77 @@
       <div *ngFor="let exp of profileData.experienciaLaboral; let i = index">
         <div class="form-row">
           <div class="col-md-3">
-            <input type="text" name="empresa" [(ngModel)]="exp.empresa" placeholder="Empresa" class="form-control">
+            <input
+              type="text"
+              name="empresa"
+              [(ngModel)]="exp.empresa"
+              placeholder="Empresa"
+              class="form-control"
+            />
           </div>
           <div class="col-md-3">
-            <input type="text" name="descripcion" [(ngModel)]="exp.descripcion" placeholder="Descripción" class="form-control">
+            <input
+              type="text"
+              name="descripcion"
+              [(ngModel)]="exp.descripcion"
+              placeholder="Descripción"
+              class="form-control"
+            />
           </div>
           <div class="col-md-2">
-            <input type="number" name="anioInicio" [(ngModel)]="exp.anioInicio" placeholder="Año Inicio" class="form-control">
+            <input
+              type="number"
+              name="anioInicio"
+              [(ngModel)]="exp.anioInicio"
+              placeholder="Año Inicio"
+              class="form-control"
+            />
           </div>
           <div class="col-md-2">
-            <input type="number" name="anioCierre" [(ngModel)]="exp.anioCierre" placeholder="Año Cierre" class="form-control">
+            <input
+              type="number"
+              name="anioCierre"
+              [(ngModel)]="exp.anioCierre"
+              placeholder="Año Cierre"
+              class="form-control"
+            />
           </div>
           <div class="col-md-2">
-            <button type="button" (click)="removeExperience(i)" class="btn btn-danger">Eliminar</button>
+            <button
+              type="button"
+              (click)="removeExperience(i)"
+              class="btn btn-danger"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       </div>
-      <button type="button" (click)="addExperience()" class="btn btn-primary">Añadir Experiencia</button>
+      <button type="button" (click)="addExperience()" class="btn btn-primary">
+        Añadir Experiencia
+      </button>
     </div>
 
     <div class="form-group">
       <label for="idiomas">Idiomas</label>
-      <input type="text" id="idiomas" name="idiomas" class="form-control" [(ngModel)]="profileData.idiomas">
+      <input
+        type="text"
+        id="idiomas"
+        name="idiomas"
+        class="form-control"
+        [(ngModel)]="profileData.idiomas"
+      />
     </div>
 
     <div class="form-group">
       <label for="competencias">Competencias</label>
-      <input type="text" id="competencias" name="competencias" class="form-control" [(ngModel)]="profileData.competencias">
+      <input
+        type="text"
+        id="competencias"
+        name="competencias"
+        class="form-control"
+        [(ngModel)]="profileData.competencias"
+      />
     </div>
 
     <div class="form-group">
@@ -84,30 +180,75 @@
       <div *ngFor="let edu of profileData.formacionAcademica; let i = index">
         <div class="form-row">
           <div class="col-md-3">
-            <input type="text" name="universidad" [(ngModel)]="edu.universidad" placeholder="Universidad" class="form-control">
+            <input
+              type="text"
+              name="universidad"
+              [(ngModel)]="edu.universidad"
+              placeholder="Universidad"
+              class="form-control"
+            />
           </div>
           <div class="col-md-3">
-            <input type="text" name="carrera" [(ngModel)]="edu.carrera" placeholder="Carrera" class="form-control">
+            <input
+              type="text"
+              name="carrera"
+              [(ngModel)]="edu.carrera"
+              placeholder="Carrera"
+              class="form-control"
+            />
           </div>
           <div class="col-md-2">
-            <input type="number" name="anioInicio" [(ngModel)]="edu.anioInicio" placeholder="Año Inicio" class="form-control">
+            <input
+              type="number"
+              name="anioInicio"
+              [(ngModel)]="edu.anioInicio"
+              placeholder="Año Inicio"
+              class="form-control"
+            />
           </div>
           <div class="col-md-2">
-            <input type="number" name="anioCierre" [(ngModel)]="edu.anioCierre" placeholder="Año Cierre" class="form-control">
+            <input
+              type="number"
+              name="anioCierre"
+              [(ngModel)]="edu.anioCierre"
+              placeholder="Año Cierre"
+              class="form-control"
+            />
           </div>
           <div class="col-md-2">
-            <button type="button" (click)="removeEducation(i)" class="btn btn-danger">Eliminar</button>
+            <button
+              type="button"
+              (click)="removeEducation(i)"
+              class="btn btn-danger"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       </div>
-      <button type="button" (click)="addEducation()" class="btn btn-primary">Añadir Formación</button>
+      <button type="button" (click)="addEducation()" class="btn btn-primary">
+        Añadir Formación
+      </button>
     </div>
 
     <div class="form-group">
       <label for="habilidades">Habilidades</label>
-      <input type="text" id="habilidades" name="habilidades" class="form-control" [(ngModel)]="profileData.habilidades">
+      <input
+        type="text"
+        id="habilidades"
+        name="habilidades"
+        class="form-control"
+        [(ngModel)]="profileData.habilidades"
+      />
     </div>
 
-    <button type="submit" class="btn btn-success mt-4" [disabled]="!profileForm.valid">Guardar</button>
+    <button
+      type="submit"
+      class="btn btn-success mt-4"
+      [disabled]="!profileForm.valid"
+    >
+      Guardar
+    </button>
+    <button (click)="generarPdf()">Descargar PDF</button>
   </div>
 </form>

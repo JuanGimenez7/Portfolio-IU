@@ -1,0 +1,29 @@
+{
+  "nombre": "fdewq",
+  "apellido": "gfd",
+  "oficio": "fewdfsweqweefgfefrergefweefefgfefwe",
+  "miPerfil": "gfew",
+  "telefono": "gfdewq",
+  "correo": "fdew",
+  "paginaWeb": "vfdew",
+  "direccion": "ffeweqee",
+  "experienciaLaboral": [
+    {
+      "empresa": "2e3refrefwe",
+      "descripcion": "43r2",
+      "anioInicio": 32,
+      "anioCierre": null
+    }
+  ],
+  "idiomas": "e",
+  "competencias": "dwqwee",
+  "formacionAcademica": [
+    {
+      "universidad": "",
+      "carrera": "",
+      "anioInicio": "",
+      "anioCierre": ""
+    }
+  ],
+  "habilidades": ""
+}

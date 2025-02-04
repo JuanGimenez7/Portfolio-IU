@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule], // Agrega FormsModule en los imports
+  imports: [FormsModule, CommonModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
@@ -25,9 +27,21 @@ export class ProfileComponent {
     habilidades: ''
   };
 
+  constructor(private profileService: ProfileService) { }
+
   onSubmit() {
     console.log('Form data:', this.profileData);
-    // Aquí podrías hacer la llamada al backend para guardar los datos
+    // Llamada al backend
+    this.profileService.saveProfile(this.profileData).subscribe(
+      response => {
+        console.log('Datos guardados correctamente:', response);
+        alert('Perfil guardado correctamente');
+      },
+      error => {
+        console.error('Error al guardar los datos:', error);
+        alert('Hubo un error al guardar los datos');
+      }
+    );
   }
 
   addExperience() {

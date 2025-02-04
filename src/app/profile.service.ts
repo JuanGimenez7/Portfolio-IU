@@ -1,3 +1,4 @@
+// profile.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -6,24 +7,21 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProfileService {
-  private apiUrl = 'http://localhost:3000/api/saveProfile';
+  private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 
-  saveProfile(profileData: any): Observable<any> {
-    return this.http.post(this.apiUrl, profileData);
-  }
-
-  // En tu ProfileService, agrega:
   generatePdf(profileData: any): Observable<Blob> {
-    return this.http.post(
-      'http://localhost:3000/api/generatePdf',
-      profileData,
-      {
-        responseType: 'blob',
-      }
-    );
+    return this.http.post(`${this.apiUrl}/downloadPdf`, profileData, {
+      responseType: 'blob',
+    });
   }
 
-  
+  savePdf(profileData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/savePdf`, profileData);
+  }
+
+  saveProfile(profileData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/saveProfile`, profileData);
+  }
 }

@@ -29,6 +29,7 @@ export class ProfileComponent {
       { universidad: '', carrera: '', anioInicio: '', anioCierre: '' },
     ],
     habilidades: '',
+    fotoUrl: '', // Campo agregado para la imagen
   };
 
   constructor(private profileService: ProfileService) {}
@@ -44,6 +45,39 @@ export class ProfileComponent {
       (error) => {
         console.error('Error al guardar los datos:', error);
         alert('Hubo un error al guardar los datos');
+      }
+    );
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.profileData.fotoUrl = e.target.result; // Guarda la URL de la imagen en base64
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Función para prevenir la entrada de números en campos no permitidos
+  onlyText(event: KeyboardEvent) {
+    const char = String.fromCharCode(event.which);
+    // Si el carácter es un dígito, prevenir su entrada
+    if (/\d/.test(char)) {
+      event.preventDefault();
+    }
+  }
+
+  guardarPdf() {
+    this.profileService.savePdf(this.profileData).subscribe(
+      (response) => {
+        console.log('PDF guardado:', response);
+        alert('PDF guardado correctamente en el servidor');
+      },
+      (error) => {
+        console.error('Error al guardar el PDF:', error);
+        alert('Error al guardar el PDF');
       }
     );
   }

@@ -29,7 +29,7 @@ export class ProfileComponent {
       { universidad: '', carrera: '', anioInicio: '', anioCierre: '' },
     ],
     habilidades: '',
-    fotoUrl: '', // Campo agregado para la imagen
+    fotoUrl: '',
   };
 
   constructor(private profileService: ProfileService) {}
@@ -69,19 +69,6 @@ export class ProfileComponent {
     }
   }
 
-  guardarPdf() {
-    this.profileService.savePdf(this.profileData).subscribe(
-      (response) => {
-        console.log('PDF guardado:', response);
-        alert('PDF guardado correctamente en el servidor');
-      },
-      (error) => {
-        console.error('Error al guardar el PDF:', error);
-        alert('Error al guardar el PDF');
-      }
-    );
-  }
-
   generarPdf() {
     this.profileService.generatePdf(this.profileData).subscribe(
       (pdfBlob: Blob) => {
@@ -95,6 +82,19 @@ export class ProfileComponent {
       },
       (error) => {
         console.error('Error al generar el PDF:', error);
+      }
+    );
+  }
+
+  guardarPdf() {
+    this.profileService.savePdf(this.profileData).subscribe(
+      (response) => {
+        console.log('PDF guardado correctamente:', response);
+        alert('PDF guardado correctamente en el servidor');
+      },
+      (error) => {
+        console.error('Error al guardar el PDF:', error);
+        alert('Hubo un error al guardar el PDF');
       }
     );
   }

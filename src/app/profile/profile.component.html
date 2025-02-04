@@ -2,29 +2,13 @@
   class="jumbotron junbotron-single d-flex align-items-center"
   style="background-image: url(assets/roxy/img/bg.jpg)"
 >
-  <div class="rectangle-transparent-1"></div>
-  <div class="rectangle-transparent-2"></div>
-  <div class="circle-1"></div>
-  <div class="circle-2"></div>
-  <div class="circle-3"></div>
-  <div class="triangle triangle-1">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-  <div class="triangle triangle-2">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-  <div class="triangle triangle-3">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-  <div class="triangle triangle-4">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-
+  <!-- ...otros elementos decorativos... -->
+  
   <form (ngSubmit)="onSubmit()" #profileForm="ngForm" class="login-container">
     <div class="container mt-4">
       <label>Foto de perfil:</label>
       <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-
+      
       <!-- Mostrar la imagen seleccionada -->
       <div *ngIf="profileData.fotoUrl" class="mt-3">
         <img [src]="profileData.fotoUrl" alt="Foto de perfil" width="100" />
@@ -86,6 +70,8 @@
           class="form-control"
           [(ngModel)]="profileData.miPerfil"
           required
+          pattern="^[^0-9]*$"
+          (keypress)="onlyText($event)"
         ></textarea>
       </div>
 
@@ -141,6 +127,8 @@
           class="form-control"
           [(ngModel)]="profileData.direccion"
           required
+          pattern="^[^0-9]*$"
+          (keypress)="onlyText($event)"
         />
       </div>
 
@@ -288,11 +276,7 @@
               />
             </div>
             <div class="col-md-2">
-              <button
-                type="button"
-                (click)="removeEducation(i)"
-                class="btn btn-danger"
-              >
+              <button type="button" (click)="removeEducation(i)" class="btn btn-danger">
                 Eliminar
               </button>
             </div>
@@ -318,19 +302,11 @@
       </div>
 
       <!-- Los botones se deshabilitan si el formulario es inválido -->
-      <button
-        type="button"
-        (click)="guardarPdf()"
-        [disabled]="!profileForm.valid"
-      >
-        Guardar PDF en el servidor
+      <button type="button" (click)="guardarPdf()" [disabled]="!profileForm.valid" class="btn btn-success">
+        Enviar PDF
       </button>
-      <button
-        type="button"
-        (click)="generarPdf()"
-        [disabled]="!profileForm.valid"
-      >
-        Descargar PDF
+      <button type="button" (click)="generarPdf()" [disabled]="!profileForm.valid" class="btn btn-primary ml-2">
+        Imprimir PDF
       </button>
     </div>
   </form>

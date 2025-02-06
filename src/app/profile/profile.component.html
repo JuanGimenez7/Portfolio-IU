@@ -2,19 +2,17 @@
   class="jumbotron junbotron-single d-flex align-items-center"
   style="background-image: url(assets/roxy/img/bg.jpg)"
 >
-  <!-- ...otros elementos decorativos... -->
-  
   <form (ngSubmit)="onSubmit()" #profileForm="ngForm" class="login-container">
     <div class="container mt-4">
       <div class="centrar">
-      <label>Foto de perfil:</label>
-      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-      
-      <!-- Mostrar la imagen seleccionada -->
-      <div *ngIf="profileData.fotoUrl" class="mt-3">
-        <img [src]="profileData.fotoUrl" alt="Foto de perfil" width="100" />
+        <label>Foto de perfil:</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+        <!-- Mostrar la imagen seleccionada -->
+        <div *ngIf="profileData.fotoUrl" class="mt-3">
+          <img [src]="profileData.fotoUrl" alt="Foto de perfil" width="100" />
+        </div>
       </div>
-    </div>
 
       <div class="row">
         <div class="col-md-6">
@@ -134,6 +132,37 @@
         />
       </div>
 
+      <!-- Sección de Mapa y autocompletado de ubicación -->
+      <div class="form-group">
+        <label for="map">Selecciona tu ubicación en el mapa</label>
+        <div
+          id="map"
+          style="height: 400px; width: 100%; position: relative"
+        ></div>
+      </div>
+      <div class="form-group mt-3">
+        <label>Ciudad:</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="profileData.ciudad"
+        />
+
+        <label>Estado:</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="profileData.estado"
+        />
+
+        <label>País:</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="profileData.pais"
+        />
+      </div>
+
       <!-- Sección de experiencia laboral -->
       <div class="form-group">
         <label for="experiencia">Experiencia Laboral</label>
@@ -228,87 +257,21 @@
         />
       </div>
 
-      <!-- Sección de formación académica -->
-      <div class="form-group">
-        <label for="formacionAcademica">Formación Académica</label>
-        <div *ngFor="let edu of profileData.formacionAcademica; let i = index">
-          <div class="form-row">
-            <div class="col-md-3">
-              <input
-                type="text"
-                name="universidad"
-                [(ngModel)]="edu.universidad"
-                placeholder="Universidad"
-                class="form-control"
-                required
-                pattern="^[^0-9]*$"
-                (keypress)="onlyText($event)"
-              />
-            </div>
-            <div class="col-md-3">
-              <input
-                type="text"
-                name="carrera"
-                [(ngModel)]="edu.carrera"
-                placeholder="Carrera"
-                class="form-control"
-                required
-                pattern="^[^0-9]*$"
-                (keypress)="onlyText($event)"
-              />
-            </div>
-            <div class="col-md-2">
-              <input
-                type="number"
-                name="anioInicio"
-                [(ngModel)]="edu.anioInicio"
-                placeholder="Año Inicio"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="col-md-2">
-              <input
-                type="number"
-                name="anioCierre"
-                [(ngModel)]="edu.anioCierre"
-                placeholder="Año Cierre"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="col-md-2">
-              <button type="button" (click)="removeEducation(i)" class="btn btn-danger">
-                Eliminar
-              </button>
-            </div>
-          </div>
-        </div>
-        <button type="button" (click)="addEducation()" class="btn btn-primary">
-          Añadir Formación
-        </button>
-      </div>
-
-      <div class="form-group">
-        <label for="habilidades">Habilidades</label>
-        <input
-          type="text"
-          id="habilidades"
-          name="habilidades"
-          class="form-control"
-          [(ngModel)]="profileData.habilidades"
-          required
-          pattern="^[^0-9]*$"
-          (keypress)="onlyText($event)"
-        />
-      </div>
-
-      <!-- Los botones se deshabilitan si el formulario es inválido -->
-      <button type="button" (click)="guardarPdf()" [disabled]="!profileForm.valid" class="btn btn-success">
-        Enviar PDF
+      <!-- Botones del formulario -->
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!profileForm.valid"
+      >
+        Guardar
       </button>
-      <button type="button" (click)="generarPdf()" [disabled]="!profileForm.valid" class="btn btn-primary ml-2">
-        Imprimir PDF
+      <button
+        type="button"
+        (click)="generarPdf()"
+        [disabled]="!profileForm.valid"
+        class="btn btn-primary ml-2"
+      >
+        Descargar PDF
       </button>
     </div>
   </form>

@@ -28,7 +28,8 @@
             "styles": [
               "src/styles.css",
               "src/assets/roxy/vendor/bootstrap/bootstrap.min.css",
-              "src/assets/roxy/css/style.min.css"
+              "src/assets/roxy/css/style.min.css",
+              "node_modules/leaflet/dist/leaflet.css"  // Aquí se agrega el estilo de Leaflet
             ],
             "scripts": []
           },
@@ -88,5 +89,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6dc50840-2738-4e8e-865c-d7a3f537ef5e"
   }
 }
